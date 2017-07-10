@@ -105,9 +105,9 @@ class CalculationsController < ApplicationController
 
     @mean = (@numbers.sum)/(@numbers.count)
 
-    @variance = "Replace this string with your answer."
+    @variance = @numbers.map { |i| (i - @mean)**2 }.sum / @count
 
-    @standard_deviation = "Replace this string with your answer."
+    @standard_deviation = @variance**0.5
 
     @mode = @numbers.sort
      .chunk {|e| e}
