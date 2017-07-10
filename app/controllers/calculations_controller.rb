@@ -99,7 +99,7 @@ class CalculationsController < ApplicationController
 
     @range = (@numbers.max)- (@numbers.min)
 
-    @median = "Replace this string with your answer."
+    @median = 
 
     @sum = @numbers.sum
 
@@ -109,7 +109,16 @@ class CalculationsController < ApplicationController
 
     @standard_deviation = "Replace this string with your answer."
 
-    @mode = "Replace this string with your answer."
+    @mode = @numbers.sort
+     .chunk {|e| e}
+     .map { |e,a| [e, a.size] }
+     .sort_by { |_,cnt| -cnt }
+     .chunk(&:last)
+     .first
+     .last
+     .map(&:first)
+     .last
+    
 
     # ================================================================================
     # Your code goes above.
