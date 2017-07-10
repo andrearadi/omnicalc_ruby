@@ -103,7 +103,7 @@ class CalculationsController < ApplicationController
 
     @sum = @numbers.sum
 
-    @mean = "Replace this string with your answer."
+    @mean = (@numbers.sum)/(@numbers.count)
 
     @variance = "Replace this string with your answer."
 
