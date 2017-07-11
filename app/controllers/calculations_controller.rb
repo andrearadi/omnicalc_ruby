@@ -11,12 +11,13 @@ class CalculationsController < ApplicationController
     # ================================================================================
     
     text= params[:user_text].downcase.gsub(/[^a-z0-9\s]/i, "")
+    text1= params[:user_text].downcase
 
     @word_count = text.split.count
 
-    @character_count_with_spaces = text.length
+    @character_count_with_spaces = text1.length
 
-    @character_count_without_spaces =text.gsub(/\s+/, "").length
+    @character_count_without_spaces =text1.gsub(/\s+/, "").length
 
     @occurrences = text.split.count(@special_word)
 
