@@ -13,11 +13,11 @@ class CalculationsController < ApplicationController
 
     @word_count = @text.split.count
 
-    @character_count_with_spaces = @text.gsub(/[^a-z0-9\s]/i, "").length
+    @character_count_with_spaces = @text.length
 
-    @character_count_without_spaces =@text.gsub(/\s+/, "").gsub(/[^a-z0-9\s]/i, "").length
+    @character_count_without_spaces =@text.gsub(/\s+/, "").length
 
-    @occurrences = @text.gsub(/[^a-z0-9\s]/i, "").split.count(@special_word)
+    @occurrences = @text.split.count(@special_word)
 
     # ================================================================================
     # Your code goes above.
@@ -41,9 +41,9 @@ class CalculationsController < ApplicationController
     apr = params[:annual_percentage_rate].to_f
     years = params[:number_of_years].to_i
     principal = params[:principal_value].to_f
-    
+    monthly_interest = ((apr/12)/100)
 
-    @monthly_payment = (((principal*(apr/100))*years)+ principal)/(12*years)
+    @monthly_payment = (monthly_interest*principal)/(1-(1+monthly_interest)**((-1*years)*12))
 
     # ================================================================================
     # Your code goes above.
