@@ -10,7 +10,7 @@ class CalculationsController < ApplicationController
     # The special word the user input is in the string @special_word.
     # ================================================================================
     
-    text= params[:user_text].downcase
+    text= params[:user_text].downcase.gsub(/[^a-z0-9\s]/i, "")
 
     @word_count = text.split.count
 
